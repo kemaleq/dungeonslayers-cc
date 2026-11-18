@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eeeeec">
+  <title>Dungeonslayers Character Sheet</title>
+  <link rel="stylesheet" href="sheet.css">
+  <script src="catalog.js" defer></script>
+  <script src="advancement.js" defer></script>
+  <script src="sheet.js" defer></script>
+  <script src="catalog-ui.js" defer></script>
+</head>
+<body>
+  <header class="toolbar">
+    <label class="sr-only" for="roster">Character</label>
+    <select id="roster" aria-label="Character"></select>
+    <button id="new">New</button>
+    <button id="catalog">Catalog</button>
+    <button id="play">Play</button>
+    <button id="files">Files</button>
+  </header>
+  <nav class="view-controls" aria-label="Sheet view">
+    <button id="front" aria-pressed="true">Page 1</button>
+    <button id="back" aria-pressed="false">Page 2</button>
+    <span class="separator"></span>
+    <button id="zoom-out" aria-label="Zoom out">−</button>
+    <button id="fit">Fit</button>
+    <button id="zoom-in" aria-label="Zoom in">+</button>
+  </nav>
+  <p class="hint">Tap a name cell for prefilled choices · Tap a combat value to roll</p>
+  <main id="viewport" aria-label="Interactive character sheet">
+    <article id="page1" class="paper" aria-label="Character sheet page 1">
+      <img src="assets/character-sheet-front.png" width="1358" height="2100" alt="Original Dungeonslayers character sheet, front page" draggable="false">
+    </article>
+    <article id="page2" class="paper" aria-label="Character sheet page 2" hidden>
+      <img src="assets/character-sheet-back.png" width="1358" height="2100" alt="Original Dungeonslayers character sheet, back page" draggable="false">
+    </article>
+  </main>
+  <footer><span id="status" role="status">Stored on this device</span><span>Sheet from the supplied 2012 Dungeonslayers manual</span></footer>
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form id="edit-form">
+      <h2 id="editor-title"></h2>
+      <div id="editor-content"></div>
+      <div class="dialog-actions"><button type="button" id="cancel">Cancel</button><button type="submit" class="primary">Save</button></div>
+    </form>
+  </dialog>
+  <dialog id="tools" aria-labelledby="tools-title">
+    <div class="dialog-heading"><h2 id="tools-title">Play</h2><button id="close-tools" aria-label="Close">×</button></div>
+    <div id="tools-content"></div>
+  </dialog>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+</body>
+</html>
